@@ -331,8 +331,8 @@ class BinnedTimeSeries(BaseTimeSeries):
                 else:
                     time_bin_size = u.Quantity(time_bin_size)
 
-                time_bin_end = None           
-            
+                time_bin_end = None
+
             if time_bin_start.isscalar and time_bin_size.isscalar:
                 return BinnedTimeSeries(data=table,
                                     time_bin_start=time_bin_start,
@@ -344,4 +344,3 @@ class BinnedTimeSeries(BaseTimeSeries):
                                     time_bin_start=time_bin_start,
                                     time_bin_end=time_bin_end,
                                     time_bin_size=time_bin_size)
-            
