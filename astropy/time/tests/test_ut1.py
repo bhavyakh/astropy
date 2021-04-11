@@ -102,7 +102,7 @@ class TestTimeUT1:
             t_empty = t[[]].ut1
             t_comp_empty = []
             assert allclose_jd(t_empty, t_comp_empty)
-            
+
     def test_delta_ut1_utc(self):
         """Accessing delta_ut1_utc should try to get it from IERS
         (closes #1924 partially)"""
