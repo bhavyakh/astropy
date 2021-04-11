@@ -93,6 +93,16 @@ class TestTimeUT1:
             t_back = t.utc.ut1
             assert allclose_jd(t.jd, t_back.jd)
 
+    def test_empty_ut1(self):
+        """Converting a zero-length Time object from UTC to UT1
+        when an empty array is passed"""
+        from astropy import units as u
+        with iers_conf.set_temp('auto_download', False):
+            t = Time(['2012-06-30 12:00:00']) + np.arange(24) * u.hour
+            t_empty = t[[]].ut1
+            t_comp_empty = []
+            assert allclose_jd(t_empty, t_comp_empty)
+            
     def test_delta_ut1_utc(self):
         """Accessing delta_ut1_utc should try to get it from IERS
         (closes #1924 partially)"""

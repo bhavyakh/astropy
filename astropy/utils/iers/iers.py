@@ -350,6 +350,12 @@ class IERS(QTable):
                                  'by IERS table.')
 
     def _interpolate(self, jd1, jd2, columns, source=None):
+        # Converting a zero-length Time object from UTC to UT1
+        # when an empty array is passed
+        if(isinstance(jd1, np.ndarray)):
+            if(not jd1.size and not jd2.size):
+                return []
+
         mjd, utc = self.mjd_utc(jd1, jd2)
         # enforce array
         is_scalar = not hasattr(mjd, '__array__') or mjd.ndim == 0
